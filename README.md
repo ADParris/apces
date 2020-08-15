@@ -4,8 +4,10 @@
 
 The client was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Also imported [Styled Components](https://github.com/styled-components/styled-components) to handle styling.
+Added [Styled Components](https://github.com/styled-components/styled-components) to handle styling.
 
-And adjusted the src directory structure for the project, initial setup complete.
+Added [Open Sans Condensed](https://fonts.google.com/specimen/Open+Sans+Condensed) for site font.
+
+Added [React Router DOM](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom) to handle intra-app routing.
 
 ### Server
