@@ -6,7 +6,7 @@ const Layout = ({ children }) => <StyledLayout>{children}</StyledLayout>
 const StyledLayout = styled.div`
 	flex-direction: column;
 	align-items: center;
-	padding: 2rem 8rem;
+	padding: 2rem 6rem;
 	display: flex;
 `
 
