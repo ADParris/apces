@@ -1,19 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
+
+import Layout from './Layout'
 
 import Directory from '../components/Directory'
 
 const HomePage = () => (
-	<StyledHomePage>
+	<Layout>
 		<Directory />
-	</StyledHomePage>
+	</Layout>
 )
-
-const StyledHomePage = styled.div`
-	flex-direction: column;
-	align-items: center;
-	padding: 2rem 8rem;
-	display: flex;
-`
 
 export default HomePage
