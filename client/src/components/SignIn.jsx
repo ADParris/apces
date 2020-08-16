@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import CustomButton from './CustomButton'
 import FormInput from './FormInput'
 
-import { signInWithGoogle } from '../api/firebase.utils'
+import { auth, signInWithGoogle } from '../api/firebase.utils'
 
 const INITIAL_STATE = { email: '', password: '' }
 
@@ -15,11 +15,14 @@ const SignIn = () => {
 	const handleChange = ({ target: { name, value } }) =>
 		setCredentials({ ...credentials, [name]: value })
 
-	const handleSubmit = e => {
+	const handleSubmit = async e => {
 		e.preventDefault()
-		console.log(`Email: ${email}`)
-		console.log(`Password: ${password}`)
-		setCredentials(INITIAL_STATE)
+		try {
+			await auth.signInWithEmailAndPassword(email, password)
+			setCredentials(INITIAL_STATE)
+		} catch (err) {
+			console.log(err.message)
+		}
 	}
 
 	return (
