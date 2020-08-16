@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
-import { auth } from './api/firebase.utils'
+import { auth, createUserProfileDocument } from './api/firebase.utils'
 
 import GlobalStyle from './constants/globalStyle'
 
@@ -16,9 +16,18 @@ const App = () => {
 	const { currentUser } = appState
 
 	React.useEffect(() => {
-		const unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-			setAppState({ ...appState, currentUser: user })
-			console.log(user)
+		const unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+			if (userAuth) {
+				const userRef = await createUserProfileDocument(userAuth)
+				userRef.onSnapshot(snapShot =>
+					setAppState({
+						...appState,
+						currentUser: { id: snapShot.id, ...snapShot.data() },
+					})
+				)
+			} else {
+				setAppState({ ...appState, currentUser: userAuth })
+			}
 		})
 		return () => unsubscribeFromAuth()
 	}, [])
