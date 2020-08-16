@@ -13,6 +13,9 @@ const GlobalStyle = createGlobalStyle`
       font-family: 'Open Sans Condensed', sans-serif;
       background-color: #ffffff;
       font-size: 1.6rem;
+      input {
+		    border: none;
+      }
       ul {
         list-style: none;
       }

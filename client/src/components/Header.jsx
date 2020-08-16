@@ -4,27 +4,42 @@ import { Link } from 'react-router-dom'
 
 import { ReactComponent as Logo } from '../assets/ap-logo.svg'
 
-const Header = () => (
-	<StyledHeader>
-		<div className="inner-wrap">
-			<Link className="logo" to="/">
-				<Logo className="logo-image" />
-				<h2 className="logo-text">Clothing</h2>
+import { auth } from '../api/firebase.utils'
+
+const Header = ({ currentUser }) => {
+	const signOut = () => auth.signOut()
+
+	const renderSignInSignOut = () =>
+		currentUser ? (
+			<div className="nav-item" onClick={signOut}>
+				SIGN OUT
+			</div>
+		) : (
+			<Link className="nav-item" to="/signin">
+				SIGN IN
 			</Link>
-			<nav className="nav">
-				<Link className="nav-item" to="/shop">
-					SHOP
+		)
+
+	return (
+		<StyledHeader>
+			<div className="inner-wrap">
+				<Link className="logo" to="/">
+					<Logo className="logo-image" />
+					<h2 className="logo-text">Clothing</h2>
 				</Link>
-				<Link className="nav-item" to="/contact">
-					CONTACT
-				</Link>
-				<Link className="nav-item" to="/signin">
-					SIGNIN
-				</Link>
-			</nav>
-		</div>
-	</StyledHeader>
-)
+				<nav className="nav">
+					<Link className="nav-item" to="/shop">
+						SHOP
+					</Link>
+					<Link className="nav-item" to="/contact">
+						CONTACT
+					</Link>
+					{renderSignInSignOut()}
+				</nav>
+			</div>
+		</StyledHeader>
+	)
+}
 
 const StyledHeader = styled.header`
 	width: 100%;
