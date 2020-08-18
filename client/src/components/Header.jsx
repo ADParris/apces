@@ -5,9 +5,12 @@ import { Link } from 'react-router-dom'
 
 import { ReactComponent as Logo } from '../assets/ap-logo.svg'
 
+import CartDropdown from './CartDropdown'
+import CartIcon from './CartIcon'
+
 import { auth } from '../api/firebase.utils'
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, hidden }) => {
 	const signOut = () => auth.signOut()
 
 	const renderSignInSignOut = () =>
@@ -28,15 +31,19 @@ const Header = ({ currentUser }) => {
 					<Logo className="logo-image" />
 					<h2 className="logo-text">Clothing</h2>
 				</Link>
-				<nav className="nav">
-					<Link className="nav-item" to="/shop">
-						SHOP
-					</Link>
-					<Link className="nav-item" to="/contact">
-						CONTACT
-					</Link>
-					{renderSignInSignOut()}
-				</nav>
+				<div className="nav-wrap">
+					<nav className="nav">
+						<Link className="nav-item" to="/shop">
+							SHOP
+						</Link>
+						<Link className="nav-item" to="/contact">
+							CONTACT
+						</Link>
+						{renderSignInSignOut()}
+					</nav>
+					<CartIcon />
+				</div>
+				{hidden ? null : <CartDropdown />}
 			</div>
 		</StyledHeader>
 	)
@@ -63,11 +70,19 @@ const StyledHeader = styled.header`
 		}
 
 		.nav {
+			&-wrap {
+				justify-content: flex-end;
+				align-items: center;
+				display: flex;
+				flex: auto;
+			}
+
 			justify-content: flex-end;
 			align-items: center;
 			display: flex;
 			height: 100%;
 			width: 50%;
+
 			&-item {
 				margin-right: 1rem;
 				font-size: 2.3rem;
@@ -79,6 +94,9 @@ const StyledHeader = styled.header`
 	}
 `
 
-const mapStateToProps = ({ user: { currentUser } }) => ({ currentUser })
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+	currentUser,
+	hidden,
+})
 
 export default connect(mapStateToProps)(Header)
