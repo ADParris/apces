@@ -16,4 +16,6 @@ Added [Redux](https://www.npmjs.com/package/redux) to handle the state of the ap
 
 Added [React Redux](https://www.npmjs.com/package/react-redux) bindings for Redux to work with React.
 
+Added [Reselect](https://www.npmjs.com/package/reselect) to handle selector memoization.
+
 ### Server

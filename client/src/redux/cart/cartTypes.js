@@ -1,1 +1,4 @@
-export default { TOGGLE_CART_HIDDEN: 'TOGGLE_CART_HIDDEN' }
+export default {
+	ADD_ITEM: 'ADD_ITEM',
+	TOGGLE_CART_HIDDEN: 'TOGGLE_CART_HIDDEN',
+}
