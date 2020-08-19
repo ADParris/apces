@@ -18,4 +18,6 @@ Added [React Redux](https://www.npmjs.com/package/react-redux) bindings for Redu
 
 Added [Reselect](https://www.npmjs.com/package/reselect) to handle selector memoization.
 
+Added [Redux Persist](https://www.npmjs.com/package/redux-persist) to handle local storage persistance of the app state.
+
 ### Server

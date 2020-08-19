@@ -1,16 +1,17 @@
 import React from 'react'
+import { Route, Switch } from 'react-router-dom'
 
 import Layout from './Layout'
 
-import collections from '../constants/shop.data'
+import CollectionOverview from '../components/Collection/CollectionOverview'
+import CollectionPage from './CollectionPage'
 
-import CollectionPreview from '../components/CollectionPreview'
-
-const ShopPage = () => (
+const ShopPage = ({ match }) => (
 	<Layout>
-		{collections.map(({ id, ...otherProps }) => (
-			<CollectionPreview key={id} {...otherProps} />
-		))}
+		<Switch>
+			<Route path={`${match.path}/:collectionId`} component={CollectionPage} />
+			<Route path={`${match.path}`} component={CollectionOverview} />
+		</Switch>
 	</Layout>
 )
 

@@ -6,8 +6,8 @@ import { createStructuredSelector } from 'reselect'
 
 import { ReactComponent as Logo } from '../assets/ap-logo.svg'
 
-import CartDropdown from './CartDropdown'
-import CartIcon from './CartIcon'
+import CartDropdown from './Cart/CartDropdown'
+import CartIcon from './Cart/CartIcon'
 
 import { selectCartHidden } from '../redux/cart/cartSelectors'
 import { selectCurrentUser } from '../redux/user/userSelectors'
