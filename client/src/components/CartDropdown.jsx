@@ -7,10 +7,14 @@ import { createStructuredSelector } from 'reselect'
 import CartItem from './CartItem'
 import CustomButton from './CustomButton'
 
+import { toggleCartHidden } from '../redux/cart/cartActions'
 import { selectCartItems } from '../redux/cart/cartSelectors'
 
-const CartDropdown = ({ cartItems, history }) => {
-	const handleClick = () => history.push('/checkout')
+const CartDropdown = ({ cartItems, dispatch, history }) => {
+	const handleClick = () => {
+		history.push('/checkout')
+		dispatch(toggleCartHidden())
+	}
 
 	return (
 		<StyledCartDropdown>
