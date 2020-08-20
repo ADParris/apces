@@ -20,4 +20,6 @@ Added [Reselect](https://www.npmjs.com/package/reselect) to handle selector memo
 
 Added [Redux Persist](https://www.npmjs.com/package/redux-persist) to handle local storage persistance of the app state.
 
+Added [Lodash Memoize](https://www.npmjs.com/package/lodash.memoize) to memoize the selectCollection function, in the /redux/shop/shopSelectors file.
+
 ### Server
