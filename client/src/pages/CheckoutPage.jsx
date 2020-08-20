@@ -9,6 +9,7 @@ import Layout from '../layout/Layout'
 
 import CheckoutItemsList from '../components/Checkout/CheckoutItemsList'
 import CheckoutTitles from '../components/Checkout/CheckoutTitles'
+import StripeButton from '../components/Shared/StripeButton'
 
 const CheckoutPage = ({ cartItems, total }) => {
 	return (
@@ -19,6 +20,12 @@ const CheckoutPage = ({ cartItems, total }) => {
 				<div className="cart-total">
 					<span>TOTAL: ${total}</span>
 				</div>
+				<div className="test-warning">
+					• Please use the following test credit card for payments •
+					<br />
+					4242 4242 4242 4242 • Exp: 01/24 • CVV: 123
+				</div>
+				<StripeButton amount={total} />
 			</StyledCheckoutPage>
 		</Layout>
 	)
@@ -37,6 +44,12 @@ const StyledCheckoutPage = styled.div`
 		margin-right: 8%;
 		font-size: 200%;
 		width: 100%;
+	}
+	.test-warning {
+		text-align: center;
+		font-size: 2.4rem;
+		margin: 4rem 0;
+		color: red;
 	}
 `
 

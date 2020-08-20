@@ -22,4 +22,6 @@ Added [Redux Persist](https://www.npmjs.com/package/redux-persist) to handle loc
 
 Added [Lodash Memoize](https://www.npmjs.com/package/lodash.memoize) to memoize the selectCollection function, in the /redux/shop/shopSelectors file.
 
+Added [React Stripe Checkout](https://www.npmjs.com/package/react-stripe-checkout) to integrate Stripe payment processing.
+
 ### Server
