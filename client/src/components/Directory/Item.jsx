@@ -2,21 +2,21 @@ import React from 'react'
 import styled from 'styled-components'
 import { withRouter } from 'react-router-dom'
 
-const MenuItem = ({ history, imageUrl, linkUrl, match, size, title }) => {
+const Item = ({ history, imageUrl, linkUrl, match, size, title }) => {
 	const handleClick = () => history.push(`${match.url}${linkUrl}`)
 
 	return (
-		<StyledMenuItem img={imageUrl} size={size} onClick={handleClick}>
+		<StyledItem img={imageUrl} size={size} onClick={handleClick}>
 			<div className="background-image" />
 			<div className="content">
 				<h1 className="title">{title.toUpperCase()}</h1>
 				<span className="subtitle">SHOP NOW</span>
 			</div>
-		</StyledMenuItem>
+		</StyledItem>
 	)
 }
 
-const StyledMenuItem = styled.div`
+const StyledItem = styled.div`
 	height: ${props => (props.size === 'large' ? 38 : 24)}rem;
 	border: 0.1rem solid black;
 	margin: 0 0.75rem 1.5rem;
@@ -82,4 +82,4 @@ const StyledMenuItem = styled.div`
 	}
 `
 
-export default withRouter(MenuItem)
+export default withRouter(Item)
