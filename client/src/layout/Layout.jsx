@@ -1,7 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Layout = ({ children }) => <StyledLayout>{children}</StyledLayout>
+import GlobalStyle from '../constants/globalStyle'
+
+import Header from '../components/Shared/Header'
+
+const Layout = ({ children }) => (
+	<>
+		<GlobalStyle />
+		<Header />
+		<StyledLayout>{children}</StyledLayout>
+	</>
+)
 
 const StyledLayout = styled.div`
 	flex-direction: column;

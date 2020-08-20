@@ -8,14 +8,10 @@ import { auth, createUserProfileDocument } from './api/firebase.utils'
 import { selectCurrentUser } from './redux/user/userSelectors'
 import { setCurrentUser } from './redux/user/userActions'
 
-import GlobalStyle from './constants/globalStyle'
-
 import CheckoutPage from './pages/CheckoutPage'
 import AuthPage from './pages/AuthPage'
 import ShopPage from './pages/ShopPage'
 import HomePage from './pages/HomePage'
-
-import Header from './components/Shared/Header'
 
 const App = ({ currentUser, setCurrentUser }) => {
 	React.useEffect(() => {
@@ -33,19 +29,15 @@ const App = ({ currentUser, setCurrentUser }) => {
 	}, [])
 
 	return (
-		<>
-			<GlobalStyle />
-			<Header />
-			<Switch>
-				<Route
-					path="/signin"
-					render={() => (currentUser ? <Redirect to="/" /> : <AuthPage />)}
-				/>
-				<Route path="/shop" component={ShopPage} />
-				<Route path="/checkout" component={CheckoutPage} />
-				<Route path="/" component={HomePage} />
-			</Switch>
-		</>
+		<Switch>
+			<Route
+				path="/signin"
+				render={() => (currentUser ? <Redirect to="/" /> : <AuthPage />)}
+			/>
+			<Route path="/shop" component={ShopPage} />
+			<Route path="/checkout" component={CheckoutPage} />
+			<Route path="/" component={HomePage} />
+		</Switch>
 	)
 }
 
