@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import CustomButton from './CustomButton'
-import FormInput from './FormInput'
+import CustomButton from '../Shared/CustomButton'
+import FormInput from '../Shared/FormInput'
 
-import { auth, createUserProfileDocument } from '../api/firebase.utils'
+import { auth, createUserProfileDocument } from '../../api/firebase.utils'
 
 const INITIAL_STATE = {
 	displayName: '',

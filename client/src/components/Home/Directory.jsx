@@ -5,7 +5,7 @@ import { createStructuredSelector } from 'reselect'
 
 import MenuItem from './MenuItem'
 
-import { selectDirectorySections } from '../redux/directory/directorySelectors'
+import { selectDirectorySections } from '../../redux/directory/directorySelectors'
 
 const Directory = ({ sections }) => (
 	<StyledDirectory>

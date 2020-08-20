@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
-import CustomButton from '../CustomButton'
+import CustomButton from '../Shared/CustomButton'
 
 import { addItem } from '../../redux/cart/cartActions'
 
@@ -29,7 +29,7 @@ const StyledCollectionItem = styled.div`
 	position: relative;
 	display: flex;
 	height: 35rem;
-	width: 22%;
+	width: 22vw;
 
 	.image {
 		background-image: url(${props => props.img});

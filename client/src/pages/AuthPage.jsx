@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Layout from './Layout'
+import Layout from '../layout/Layout'
 
-import SignIn from '../components/SignIn'
-import SignUp from '../components/SignUp'
+import SignIn from '../components/Auth/SignIn'
+import SignUp from '../components/Auth/SignUp'
 
 const AuthPage = () => (
 	<Layout>

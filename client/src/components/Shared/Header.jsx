@@ -4,15 +4,15 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { createStructuredSelector } from 'reselect'
 
-import { ReactComponent as Logo } from '../assets/ap-logo.svg'
+import { ReactComponent as Logo } from '../../assets/ap-logo.svg'
 
-import CartDropdown from './Cart/CartDropdown'
-import CartIcon from './Cart/CartIcon'
+import CartDropdown from '../Cart/Dropdown'
+import CartIcon from '../Cart/Icon'
 
-import { selectCartHidden } from '../redux/cart/cartSelectors'
-import { selectCurrentUser } from '../redux/user/userSelectors'
+import { selectCartHidden } from '../../redux/cart/cartSelectors'
+import { selectCurrentUser } from '../../redux/user/userSelectors'
 
-import { auth } from '../api/firebase.utils'
+import { auth } from '../../api/firebase.utils'
 
 const Header = ({ currentUser, hidden }) => {
 	const signOut = () => auth.signOut()

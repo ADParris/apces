@@ -15,7 +15,7 @@ import AuthPage from './pages/AuthPage'
 import ShopPage from './pages/ShopPage'
 import HomePage from './pages/HomePage'
 
-import Header from './components/Header'
+import Header from './components/Shared/Header'
 
 const App = ({ currentUser, setCurrentUser }) => {
 	React.useEffect(() => {
