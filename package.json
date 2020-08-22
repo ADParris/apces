@@ -1,0 +1,38 @@
+{
+	"name": "apces",
+	"version": "1.0.0",
+	"engines": {
+		"node": "12.18.3",
+		"npm": "6.14.8"
+	},
+	"description": "### Client",
+	"main": "server.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ADParris/apces.git"
+	},
+	"author": "Andrew Parris",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/ADParris/apces/issues"
+	},
+	"homepage": "https://github.com/ADParris/apces#readme",
+	"scripts": {
+		"client": "cd client && npm start",
+		"server": "nodemon server.js",
+		"build": "cd client && npm run build",
+		"dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+		"start": "node server.js",
+		"heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+	},
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"cors": "^2.8.5",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"stripe": "^8.89.0"
+	},
+	"devDependencies": {
+		"concurrently": "^5.3.0"
+	}
+}

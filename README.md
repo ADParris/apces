@@ -24,4 +24,16 @@ Added [Lodash Memoize](https://www.npmjs.com/package/lodash.memoize) to memoize 
 
 Added [React Stripe Checkout](https://www.npmjs.com/package/react-stripe-checkout) to integrate Stripe payment processing.
 
+Added [Axios](https://www.npmjs.com/package/axios) to handle front-end network requests.
+
 ### Server
+
+Added [Express](https://www.npmjs.com/package/express) to run the server.
+
+Added [CORS](https://www.npmjs.com/package/cors) to enable Cross Origin Resource Sharing.
+
+Added [Body Parser](https://www.npmjs.com/package/body-parser) to parse incoming request bodies.
+
+Added [Dot Env](https://www.npmjs.com/package/dotenv) to set Environment Variables.
+
+Added [Stripe](https://www.npmjs.com/package/stripe) to handle payment processing.
