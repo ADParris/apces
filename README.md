@@ -26,6 +26,8 @@ Added [React Stripe Checkout](https://www.npmjs.com/package/react-stripe-checkou
 
 Added [Axios](https://www.npmjs.com/package/axios) to handle front-end network requests.
 
+Added [Redux Thunk](https://www.npmjs.com/package/redux-thunk) to handle asynchronous events within Redux actions.
+
 ### Server
 
 Added [Express](https://www.npmjs.com/package/express) to run the server.
