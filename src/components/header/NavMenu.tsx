@@ -2,7 +2,7 @@ import { Box, Flex, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import { ColorModeSwitcher } from '../ColorModeSwitcher';
+import { ColorModeSwitcher } from './ColorModeSwitcher';
 
 export const NavMenu: React.FC = () => {
 	const colorMode = useColorModeValue('dark', 'light');
