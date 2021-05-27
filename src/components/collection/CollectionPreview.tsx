@@ -17,11 +17,11 @@ export const CollectionPreview: React.FC<ComponentProps> = ({
 	title,
 }) => {
 	return (
-		<Flex class="collection-preview" flexDirection="column" mb="7">
+		<Flex flexDirection="column" mb="7">
 			<Text className="title" as="h2" fontSize="3xl" mb="6">
 				{title.toUpperCase()}
 			</Text>
-			<Flex class="preview" justifyContent="space-between">
+			<Flex justifyContent="space-between">
 				{items
 					.filter((_, index) => index < 4)
 					.map(({ id, ...otherProps }) => (

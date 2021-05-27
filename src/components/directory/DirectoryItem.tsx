@@ -62,7 +62,7 @@ export const DirectoryItem: React.FC<ComponentProps> = ({
 				<Text as="h2" color="gray.600" fontSize="2xl" fontWeight="bold" mb="xs">
 					{title.toUpperCase()}
 				</Text>
-				<Text as="span" fontSize="md" fontWeight="light">
+				<Text as="span" color="gray.800" fontSize="md" fontWeight="light">
 					SHOP NOW
 				</Text>
 			</Flex>
