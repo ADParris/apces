@@ -9,7 +9,7 @@ interface ComponentProps {
 	title: string;
 }
 
-export const MenuItem: React.FC<ComponentProps> = ({
+export const DirectoryItem: React.FC<ComponentProps> = ({
 	imageUrl,
 	linkUrl,
 	size,
@@ -59,7 +59,7 @@ export const MenuItem: React.FC<ComponentProps> = ({
 				position="absolute"
 				opacity="0.7"
 			>
-				<Text as="h1" color="gray.600" fontSize="2xl" fontWeight="bold" mb="xs">
+				<Text as="h2" color="gray.600" fontSize="2xl" fontWeight="bold" mb="xs">
 					{title.toUpperCase()}
 				</Text>
 				<Text as="span" fontSize="md" fontWeight="light">

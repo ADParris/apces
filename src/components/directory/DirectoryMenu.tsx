@@ -1,7 +1,7 @@
 import { Flex } from '@chakra-ui/react';
 import React from 'react';
 
-import { MenuItem } from '.';
+import { DirectoryItem } from '..';
 
 export const DirectoryMenu: React.FC = () => {
 	const sections = [
@@ -42,7 +42,7 @@ export const DirectoryMenu: React.FC = () => {
 	return (
 		<Flex justifyContent="space-between" w="full" wrap="wrap">
 			{sections.map(({ id, ...otherProps }) => (
-				<MenuItem key={id} {...otherProps} />
+				<DirectoryItem key={id} {...otherProps} />
 			))}
 		</Flex>
 	);
