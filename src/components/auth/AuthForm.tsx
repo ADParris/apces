@@ -1,8 +1,9 @@
-import { Box, Button, Flex, Text } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
 import React from 'react';
-import { CustomButton } from '../CustomButton';
 
-import { FormInput } from './FormInput';
+import { signInWithGoogle } from '../../services';
+
+import { CustomButton, CustomInput } from '..';
 
 interface Credentials {
 	[x: string]: string;
@@ -22,7 +23,7 @@ export const AuthForm: React.FC = () => {
 	const { confirmPassword, email, password } = credentials;
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setCredentials({ ...credentials, [e.target.type]: e.target.value });
+		setCredentials({ ...credentials, [e.target.name]: e.target.value });
 	};
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -43,42 +44,42 @@ export const AuthForm: React.FC = () => {
 
 			<Box w="full">
 				<form onSubmit={handleSubmit}>
-					<FormInput
+					<CustomInput
 						handleChange={handleChange}
 						id="email"
 						label="Email Address"
+						name="email"
 						type="email"
 						value={email}
 					/>
 
-					<FormInput
+					<CustomInput
 						handleChange={handleChange}
 						id="password"
 						label="Password"
+						name="password"
 						type="password"
 						value={password}
 					/>
 
 					{!isSignin && (
-						<FormInput
+						<CustomInput
 							handleChange={handleChange}
-							id="comfirm-password"
+							id="comfirmPassword"
 							label="Comfirm Password"
+							name="confirmPassword"
 							type="password"
 							value={confirmPassword}
 						/>
 					)}
 
 					<Flex justifyContent="space-between" mt="1rem" w="full">
-						<CustomButton type="submit">SUBMIT</CustomButton>
-						<Button
-							_hover={{ backgroundColor: 'blue' }}
-							backgroundColor="blue.400"
-							color="white"
-							fontSize="1.125rem"
-						>
-							{`Sign ${isSignin ? 'In' : 'Up'} with Google`}
-						</Button>
+						<CustomButton type="submit">
+							Sign {isSignin ? 'In' : 'Up'}
+						</CustomButton>
+						<CustomButton isGoogleSignIn onClick={signInWithGoogle}>
+							SIGNIN WITH GOOGLE
+						</CustomButton>
 					</Flex>
 				</form>
 			</Box>
@@ -88,11 +89,11 @@ export const AuthForm: React.FC = () => {
 				<Text
 					_hover={{
 						borderBottom: '0.063rem solid',
-						color: 'blue',
+						color: 'gray',
 						cursor: 'pointer',
 					}}
 					as="span"
-					fontStyle="italic"
+					color="gray.400"
 					onClick={toggleForm}
 				>
 					Sign {isSignin ? 'Up' : 'In'}

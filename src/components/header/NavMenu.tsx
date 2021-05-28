@@ -2,37 +2,51 @@ import { Box, Flex, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
+import { auth, firebase } from '../../services';
+
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 
-export const NavMenu: React.FC = () => {
+interface ComponentProps {
+	currentUser: firebase.User | null;
+}
+
+export const NavMenu: React.FC<ComponentProps> = ({ currentUser }) => {
 	const colorMode = useColorModeValue('dark', 'light');
 	const location = useLocation();
-
-	// Temporary...
-	const isAuthed = false;
 
 	const createNavLinks = () => {
 		const navItems = ['shop', 'contact'];
 
-		isAuthed ? navItems.push('signout') : navItems.push('signin');
+		currentUser ? navItems.push('signOut') : navItems.push('signIn');
 
 		const thickness = colorMode === 'dark' ? '0.188rem' : '0.125rem';
 
 		const navLinks = navItems.map(navItem => {
 			const active = location.pathname === `/${navItem}`;
+			const isSignOut = navItem === 'signOut';
+			const label =
+				navItem === 'signIn'
+					? 'sign in'
+					: navItem === 'signOut'
+					? 'sign out'
+					: navItem;
 
 			return (
 				<Box key={navItem} mr="0.625rem">
 					<Box
 						_hover={{ borderBottom: `${thickness} solid` }}
-						as={Link}
-						borderBottom={active ? `${thickness} solid` : 'none'}
+						as={isSignOut ? Box : Link}
+						borderBottom={
+							active ? `${thickness} solid` : `${thickness} solid transparent`
+						}
+						cursor="pointer"
 						to={`/${navItem}`}
 						fontSize="1.438rem"
+						m={isSignOut ? '0 0.313rem' : '0.313rem'}
+						onClick={() => isSignOut && auth().signOut()}
 						p="0.313rem"
-						m="0.313rem"
 					>
-						{navItem.toUpperCase()}
+						{label.toUpperCase()}
 					</Box>
 				</Box>
 			);

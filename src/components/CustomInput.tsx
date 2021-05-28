@@ -1,28 +1,39 @@
-import { FormControl, FormLabel, Input } from '@chakra-ui/react';
+import {
+	FormControl,
+	FormLabel,
+	Input,
+	useColorModeValue,
+} from '@chakra-ui/react';
 import React from 'react';
 
 interface ComponentProps {
 	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	id: string;
 	label?: string;
+	name: string;
 	type: string;
 	value: string;
 }
 
-export const FormInput: React.FC<ComponentProps> = ({
+export const CustomInput: React.FC<ComponentProps> = ({
 	handleChange,
 	id,
 	label,
+	name,
 	type,
 	value,
 }) => {
+	const isDarkMode = useColorModeValue('dark', 'light') === 'dark';
+
 	return (
 		<FormControl id={id} position="relative" m="2.813rem 0">
 			<Input
-				backgroundColor="white"
-				borderBottom="0.063rem solid"
+				backgroundColor={isDarkMode ? 'white' : '#1A202C'}
+				borderBottom={`0.063rem solid ${isDarkMode ? '#1A202C' : 'white'}`}
 				borderRadius={0}
+				color={isDarkMode ? '#1A202C' : 'white'}
 				fontSize="1.125rem"
+				name={name}
 				onChange={handleChange}
 				p="0.625rem 0.625rem 0.625rem 0.313rem"
 				type={type}
@@ -31,14 +42,18 @@ export const FormInput: React.FC<ComponentProps> = ({
 			/>
 			{label && (
 				<FormLabel
-					_focus={{ color: 'gray.600', fontSize: '0.75rem', top: '-0.875rem' }}
-					color="gray.400"
-					fontSize="1rem"
+					_focus={{
+						color: isDarkMode ? 'gray.600' : 'whiteAlpha.600',
+						fontSize: '0.75rem',
+						top: '-1.125rem',
+					}}
+					color={isDarkMode ? 'gray.400' : 'whiteAlpha.400'}
+					fontSize={value ? '0.75rem' : '1rem'}
 					fontWeight="normal"
 					left="0.313rem"
 					pointerEvents="none"
 					position="absolute"
-					top="0.625rem"
+					top={value ? '-1.125rem' : '0.625rem'}
 					transition="all 300ms ease"
 				>
 					{label}

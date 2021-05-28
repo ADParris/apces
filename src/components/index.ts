@@ -6,3 +6,5 @@ export * from './directory/DirectoryMenu';
 export * from './header/Header';
 export * from './header/ColorModeSwitcher';
 export * from './CustomButton';
+export * from './CustomInput';
+export * from './CustomLogo';

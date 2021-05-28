@@ -1,38 +1,66 @@
 import { Button, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 
+import { Colors } from '../constants';
+
 interface ComponentProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	isInverse?: boolean;
+	isGoogleSignIn?: boolean;
 }
 
 export const CustomButton: React.FC<ComponentProps> = ({
 	children,
 	isInverse,
+	isGoogleSignIn,
 	...otherProps
 }) => {
 	const isDarkMode = useColorModeValue('dark', 'light') === 'dark';
 
-	const inverseButtonColor = isDarkMode ? 'white' : 'black';
-	const inverseTextColor = isDarkMode ? 'black' : 'white';
-	const inverseHoverBorderColor = isDarkMode ? 'black' : 'white';
+	const inverseButtonColor = isDarkMode ? 'white' : Colors.black;
+	const inverseTextColor = isDarkMode ? Colors.black : 'white';
+	const inverseHoverBorderColor = isDarkMode ? Colors.black : 'white';
 
-	const normalButtonColor = isDarkMode ? 'black' : 'white';
-	const normalTextColor = isDarkMode ? 'white' : 'black';
-	const normalHoverBorderColor = isDarkMode ? 'black' : 'white';
+	const normalButtonColor = isDarkMode ? Colors.black : 'white';
+	const normalTextColor = isDarkMode ? 'white' : Colors.black;
+	const normalHoverBorderColor = isDarkMode ? Colors.black : 'white';
 
 	return (
 		<Button
 			_hover={{
-				backgroundColor: isInverse ? normalButtonColor : inverseButtonColor,
+				backgroundColor: isGoogleSignIn
+					? Colors.googleHighlight
+					: isInverse
+					? normalButtonColor
+					: inverseButtonColor,
 				border: `0.063rem solid ${
-					isInverse ? normalHoverBorderColor : inverseHoverBorderColor
+					isGoogleSignIn
+						? 'transparent'
+						: isInverse
+						? normalHoverBorderColor
+						: inverseHoverBorderColor
 				}`,
-				color: isInverse ? normalTextColor : inverseTextColor,
+				color: isGoogleSignIn
+					? 'white'
+					: isInverse
+					? normalTextColor
+					: inverseTextColor,
 			}}
-			backgroundColor={isInverse ? inverseButtonColor : normalButtonColor}
-			border={`0.063rem solid ${isInverse ? 'black' : 'transparent'}`}
+			backgroundColor={
+				isGoogleSignIn
+					? Colors.googleBase
+					: isInverse
+					? inverseButtonColor
+					: normalButtonColor
+			}
+			border={`0.063rem solid ${isInverse ? Colors.black : 'transparent'}`}
 			borderRadius="0"
-			color={isInverse ? inverseTextColor : normalTextColor}
+			color={
+				isGoogleSignIn
+					? 'white'
+					: isInverse
+					? inverseTextColor
+					: normalTextColor
+			}
 			cursor="pointer"
 			fontFamily="Open Sans Condensed"
 			fontSize="0.938rem"
