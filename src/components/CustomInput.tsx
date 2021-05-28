@@ -11,6 +11,7 @@ interface ComponentProps {
 	id: string;
 	label?: string;
 	name: string;
+	required?: boolean;
 	type: string;
 	value: string;
 }
@@ -20,6 +21,7 @@ export const CustomInput: React.FC<ComponentProps> = ({
 	id,
 	label,
 	name,
+	required = false,
 	type,
 	value,
 }) => {
@@ -36,6 +38,7 @@ export const CustomInput: React.FC<ComponentProps> = ({
 				name={name}
 				onChange={handleChange}
 				p="0.625rem 0.625rem 0.625rem 0.313rem"
+				required={required}
 				type={type}
 				value={value}
 				variant="unstyled"

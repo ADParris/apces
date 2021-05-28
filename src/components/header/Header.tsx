@@ -1,13 +1,13 @@
 import { Box, Flex } from '@chakra-ui/react';
 import React from 'react';
 
-import { firebase } from '../../services';
+import { IUser } from '../models';
 
 import { CustomLogo } from '..';
 import { NavMenu } from './NavMenu';
 
 interface ComponentProps {
-	currentUser: firebase.User | null;
+	currentUser: IUser | null;
 }
 
 export const Header: React.FC<ComponentProps> = ({ currentUser }) => {

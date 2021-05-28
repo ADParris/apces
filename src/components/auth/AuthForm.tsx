@@ -1,7 +1,12 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
 import React from 'react';
 
-import { signInWithGoogle } from '../../services';
+import {
+	createUserWithEmailAndPassword,
+	getCurrentUser,
+	signInWithEmailAndPassword,
+	signInWithGoogle,
+} from '../../services';
 
 import { CustomButton, CustomInput } from '..';
 
@@ -12,6 +17,7 @@ interface Credentials {
 const INITIAL_CREDENTIALS = {
 	confirmPassword: '',
 	email: '',
+	name: '',
 	password: '',
 };
 
@@ -20,18 +26,41 @@ export const AuthForm: React.FC = () => {
 		React.useState<Credentials>(INITIAL_CREDENTIALS);
 	const [isSignin, setIsSignin] = React.useState(true);
 
-	const { confirmPassword, email, password } = credentials;
+	const { confirmPassword, email, name, password } = credentials;
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setCredentials({ ...credentials, [e.target.name]: e.target.value });
 	};
 
+	const handleSignIn = async () => {
+		try {
+			await signInWithEmailAndPassword(email, password);
+			setCredentials(INITIAL_CREDENTIALS);
+		} catch (err) {
+			console.log(err.message);
+		}
+	};
+
+	const handleSignUp = async () => {
+		if (confirmPassword !== password) {
+			alert(`Passwords don't match!`);
+			return;
+		}
+		try {
+			const user = await createUserWithEmailAndPassword(email, password);
+
+			if (user) {
+				await getCurrentUser({ user, name });
+				setCredentials(INITIAL_CREDENTIALS);
+			}
+		} catch (err) {
+			console.log(err.message);
+		}
+	};
+
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-
-		console.log(credentials);
-
-		setCredentials(INITIAL_CREDENTIALS);
+		isSignin ? handleSignIn() : handleSignUp();
 	};
 
 	const toggleForm = () => setIsSignin(!isSignin);
@@ -44,11 +73,24 @@ export const AuthForm: React.FC = () => {
 
 			<Box w="full">
 				<form onSubmit={handleSubmit}>
+					{!isSignin && (
+						<CustomInput
+							handleChange={handleChange}
+							id="name"
+							label="Name"
+							name="name"
+							required
+							type="text"
+							value={name}
+						/>
+					)}
+
 					<CustomInput
 						handleChange={handleChange}
 						id="email"
 						label="Email Address"
 						name="email"
+						required
 						type="email"
 						value={email}
 					/>
@@ -58,6 +100,7 @@ export const AuthForm: React.FC = () => {
 						id="password"
 						label="Password"
 						name="password"
+						required
 						type="password"
 						value={password}
 					/>
@@ -68,6 +111,7 @@ export const AuthForm: React.FC = () => {
 							id="comfirmPassword"
 							label="Comfirm Password"
 							name="confirmPassword"
+							required
 							type="password"
 							value={confirmPassword}
 						/>
@@ -78,7 +122,7 @@ export const AuthForm: React.FC = () => {
 							Sign {isSignin ? 'In' : 'Up'}
 						</CustomButton>
 						<CustomButton isGoogleSignIn onClick={signInWithGoogle}>
-							SIGNIN WITH GOOGLE
+							SIGN{isSignin ? 'IN' : 'UP'} WITH GOOGLE
 						</CustomButton>
 					</Flex>
 				</form>

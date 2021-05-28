@@ -2,17 +2,20 @@ import { Box, Flex, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import { auth, firebase } from '../../services';
+import { IUser } from '../models';
+import { auth } from '../../services';
 
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 
 interface ComponentProps {
-	currentUser: firebase.User | null;
+	currentUser: IUser | null;
 }
 
 export const NavMenu: React.FC<ComponentProps> = ({ currentUser }) => {
 	const colorMode = useColorModeValue('dark', 'light');
 	const location = useLocation();
+
+	console.log(currentUser);
 
 	const createNavLinks = () => {
 		const navItems = ['shop', 'contact'];
