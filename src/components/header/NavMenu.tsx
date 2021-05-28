@@ -1,21 +1,19 @@
 import { Box, Flex, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 
-import { IUser } from '../models';
+import { selectCurrentUser } from '../../redux/system';
 import { auth } from '../../services';
 
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 
-interface ComponentProps {
-	currentUser: IUser | null;
-}
-
-export const NavMenu: React.FC<ComponentProps> = ({ currentUser }) => {
+export const NavMenu: React.FC = () => {
 	const colorMode = useColorModeValue('dark', 'light');
 	const location = useLocation();
 
-	console.log(currentUser);
+	// Redux store...
+	const currentUser = useSelector(selectCurrentUser);
 
 	const createNavLinks = () => {
 		const navItems = ['shop', 'contact'];

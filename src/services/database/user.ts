@@ -1,7 +1,7 @@
 import { firebase } from '../firebase_init';
 import 'firebase/firestore';
 
-import { IUser, IUserName } from '../../components/models';
+import { IUser, IUserName } from '../../models';
 
 const db = firebase.firestore();
 const collectionRef = db.collection('users');

@@ -1,5 +1,6 @@
 import { Box, ChakraProvider } from '@chakra-ui/react';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 
 import { auth, getCurrentUser } from './services';
@@ -9,10 +10,11 @@ import { theme } from './constants';
 
 import { AuthPage, HomePage, ShopPage } from './pages';
 import { Header } from './components';
-import { IUser } from './components/models';
+import { IUser } from './models';
+import { setCurrentUser } from './redux/system';
 
 export const App: React.FC = () => {
-	const [currentUser, setCurrentUser] = React.useState<IUser | null>(null);
+	const dispatch = useDispatch();
 
 	React.useEffect(() => {
 		const unsubscribeFromAuth = auth().onAuthStateChanged(async user => {
@@ -22,9 +24,9 @@ export const App: React.FC = () => {
 				if (!loggedInUser) {
 					loggedInUser = await getCurrentUser({ user });
 				}
-				setCurrentUser(loggedInUser);
+				dispatch(setCurrentUser(loggedInUser));
 			} else {
-				setCurrentUser(null);
+				dispatch(setCurrentUser(null));
 			}
 		});
 
@@ -33,7 +35,7 @@ export const App: React.FC = () => {
 
 	return (
 		<ChakraProvider theme={theme}>
-			<Header currentUser={currentUser} />
+			<Header />
 			<Box minH="100vh" p="1.25rem 3.75rem">
 				<Switch>
 					<Route path="/signin" component={AuthPage} />
