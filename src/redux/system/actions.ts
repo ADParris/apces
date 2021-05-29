@@ -1,8 +1,8 @@
 import { IUser } from '../../models';
-import { SYSTEM, SystemActionTypes } from './types';
+import { SystemActions, SystemActionTypes } from './types';
 
-const setCurrentUser = (user: IUser | null): SystemActionTypes => ({
-	type: SYSTEM.SET_CURRENT_USER,
+const setCurrentUser = (user: IUser | null): SystemActions => ({
+	type: SystemActionTypes.SET_CURRENT_USER,
 	payload: user,
 });
 

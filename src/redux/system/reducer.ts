@@ -1,4 +1,4 @@
-import { SYSTEM, SystemActionTypes } from './types';
+import { SystemActions, SystemActionTypes } from './types';
 
 const INITIAL_STATE = {
 	user: null,
@@ -6,10 +6,10 @@ const INITIAL_STATE = {
 
 export const systemReducer = (
 	state = INITIAL_STATE,
-	{ type, payload }: SystemActionTypes
+	{ type, payload }: SystemActions
 ) => {
 	switch (type) {
-		case SYSTEM.SET_CURRENT_USER:
+		case SystemActionTypes.SET_CURRENT_USER:
 			return { ...state, user: payload };
 		default:
 			return state;
