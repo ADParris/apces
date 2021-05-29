@@ -18,4 +18,6 @@ const selectCartHidden = createSelector(
 	cart => cart.hidden
 );
 
-export { selectCartHidden, selectCurrentUser };
+const selectCartItems = createSelector([_selectCartState], cart => cart.items);
+
+export { selectCartHidden, selectCartItems, selectCurrentUser };
