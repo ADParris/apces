@@ -1,11 +1,21 @@
 import { createSelector } from 'reselect';
 import { ISystem, ISystemState } from './types';
 
-const _selectSystem = (state: ISystemState): ISystem => state.system;
+const _selectSystemState = (state: ISystemState): ISystem => state.system;
 
 const selectCurrentUser = createSelector(
-	[_selectSystem],
+	[_selectSystemState],
 	system => system.user
 );
 
-export { selectCurrentUser };
+const _selectCartState = createSelector(
+	[_selectSystemState],
+	system => system.cart
+);
+
+const selectCartHidden = createSelector(
+	[_selectCartState],
+	cart => cart.hidden
+);
+
+export { selectCartHidden, selectCurrentUser };

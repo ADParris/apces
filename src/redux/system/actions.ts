@@ -6,4 +6,8 @@ const setCurrentUser = (user: IUser | null): SystemActions => ({
 	payload: user,
 });
 
-export { setCurrentUser };
+const toggleCartHidden = (): SystemActions => ({
+	type: SystemActionTypes.TOGGLE_CART_HIDDEN,
+});
+
+export { setCurrentUser, toggleCartHidden };

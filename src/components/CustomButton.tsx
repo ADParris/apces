@@ -6,12 +6,14 @@ import { Colors } from '../constants';
 interface ComponentProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	isInverse?: boolean;
 	isGoogleSignIn?: boolean;
+	w?: string;
 }
 
 export const CustomButton: React.FC<ComponentProps> = ({
 	children,
 	isInverse,
 	isGoogleSignIn,
+	w,
 	...otherProps
 }) => {
 	const isDarkMode = useColorModeValue('dark', 'light') === 'dark';
@@ -52,7 +54,15 @@ export const CustomButton: React.FC<ComponentProps> = ({
 					? inverseButtonColor
 					: normalButtonColor
 			}
-			border={`0.063rem solid ${isInverse ? Colors.black : 'transparent'}`}
+			border={`0.063rem solid ${
+				isGoogleSignIn
+					? 'transparent'
+					: isDarkMode
+					? Colors.black
+					: isInverse
+					? 'white'
+					: Colors.black
+			}`}
 			borderRadius="0"
 			color={
 				isGoogleSignIn
@@ -71,7 +81,7 @@ export const CustomButton: React.FC<ComponentProps> = ({
 			minW="10.313rem"
 			textTransform="uppercase"
 			variant="solid"
-			w="auto"
+			w={w ? w : 'auto'}
 			{...otherProps}
 		>
 			{children}

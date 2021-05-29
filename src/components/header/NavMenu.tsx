@@ -6,6 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { selectCurrentUser } from '../../redux/system';
 import { auth } from '../../services';
 
+import { CartIcon } from '../cart/CartIcon';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 
 export const NavMenu: React.FC = () => {
@@ -58,8 +59,7 @@ export const NavMenu: React.FC = () => {
 	return (
 		<Flex>
 			<Flex alignItems="center">{createNavLinks()}</Flex>
-			{/* Shopping cart goes in the box below! */}
-			<Box></Box>
+			{currentUser && <CartIcon />}
 			<ColorModeSwitcher />
 		</Flex>
 	);
