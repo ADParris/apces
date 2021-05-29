@@ -1,5 +1,10 @@
-import { IUser } from '../../models';
+import { ICartItem, IUser } from '../../models';
 import { SystemActions, SystemActionTypes } from './types';
+
+const addCartItem = (item: ICartItem): SystemActions => ({
+	type: SystemActionTypes.ADD_CART_ITEM,
+	payload: item,
+});
 
 const setCurrentUser = (user: IUser | null): SystemActions => ({
 	type: SystemActionTypes.SET_CURRENT_USER,
@@ -10,4 +15,4 @@ const toggleCartHidden = (): SystemActions => ({
 	type: SystemActionTypes.TOGGLE_CART_HIDDEN,
 });
 
-export { setCurrentUser, toggleCartHidden };
+export { addCartItem, setCurrentUser, toggleCartHidden };

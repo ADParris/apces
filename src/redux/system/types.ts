@@ -1,6 +1,7 @@
-import { ICart, IUser } from '../../models';
+import { ICart, ICartItem, IUser } from '../../models';
 
 export const SystemActionTypes = {
+	ADD_CART_ITEM: 'ADD_CART_ITEM',
 	SET_CURRENT_USER: 'SET_CURRENT_USER',
 	TOGGLE_CART_HIDDEN: 'TOGGLE_CART_HIDDEN',
 };
@@ -14,6 +15,11 @@ export interface ISystemState {
 	system: ISystem;
 }
 
+interface IAddCartItem {
+	type: typeof SystemActionTypes.ADD_CART_ITEM;
+	payload: ICartItem;
+}
+
 interface ICurrentUserAction {
 	type: typeof SystemActionTypes.SET_CURRENT_USER;
 	payload: IUser | null;
@@ -24,4 +30,7 @@ interface IToggleCartHiddenAction {
 	payload?: null;
 }
 
-export type SystemActions = ICurrentUserAction | IToggleCartHiddenAction;
+export type SystemActions =
+	| IAddCartItem
+	| ICurrentUserAction
+	| IToggleCartHiddenAction;

@@ -34,6 +34,7 @@ export const App: React.FC = () => {
 		});
 
 		return () => unsubscribeFromAuth();
+		// eslint-disable-next-line
 	}, []);
 
 	return (

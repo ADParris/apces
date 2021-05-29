@@ -4,16 +4,18 @@ import React from 'react';
 import { Colors } from '../constants';
 
 interface ComponentProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+	bottom?: string;
 	isInverse?: boolean;
 	isGoogleSignIn?: boolean;
-	w?: string;
+	width?: string;
 }
 
 export const CustomButton: React.FC<ComponentProps> = ({
+	bottom,
 	children,
 	isInverse,
 	isGoogleSignIn,
-	w,
+	width,
 	...otherProps
 }) => {
 	const isDarkMode = useColorModeValue('dark', 'light') === 'dark';
@@ -64,6 +66,7 @@ export const CustomButton: React.FC<ComponentProps> = ({
 					: Colors.black
 			}`}
 			borderRadius="0"
+			bottom={bottom ?? 'inherit'}
 			color={
 				isGoogleSignIn
 					? 'white'
@@ -81,7 +84,7 @@ export const CustomButton: React.FC<ComponentProps> = ({
 			minW="10.313rem"
 			textTransform="uppercase"
 			variant="solid"
-			w={w ? w : 'auto'}
+			w={width ?? 'auto'}
 			{...otherProps}
 		>
 			{children}

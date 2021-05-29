@@ -23,7 +23,7 @@ export const CartDropdown: React.FC = () => {
 		>
 			<Flex flexDirection="column" h="15rem" overflowY="scroll"></Flex>
 			<Box mt="auto">
-				<CustomButton isInverse w="full">
+				<CustomButton width="full" isInverse>
 					CHECKOUT
 				</CustomButton>
 			</Box>

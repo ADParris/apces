@@ -18,14 +18,14 @@ export const CollectionPreview: React.FC<ComponentProps> = ({
 }) => {
 	return (
 		<Flex flexDirection="column" mb="7">
-			<Text className="title" as="h2" fontSize="3xl" mb="6">
+			<Text as="h2" fontSize="3xl" mb="6">
 				{title.toUpperCase()}
 			</Text>
 			<Flex justifyContent="space-between">
 				{items
 					.filter((_, index) => index < 4)
-					.map(({ id, ...otherProps }) => (
-						<CollectionItem key={id} {...otherProps} />
+					.map(item => (
+						<CollectionItem key={item.id} item={item} />
 					))}
 			</Flex>
 		</Flex>
