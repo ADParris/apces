@@ -26,7 +26,7 @@ export const CollectionItem: React.FC<ComponentProps> = ({ item }) => {
 			justifyContent="center"
 			position="relative"
 			role="group"
-			w="22%"
+			w="22vw"
 		>
 			<Box
 				_groupHover={{ opacity: 0.8 }}

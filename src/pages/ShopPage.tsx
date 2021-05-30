@@ -1,12 +1,24 @@
 import { Box } from '@chakra-ui/react';
 import React from 'react';
-
+import { Route, RouteComponentProps, Switch } from 'react-router';
 import { CollectionOverview } from '../components/collection/CollectionOverview';
 
-export const ShopPage: React.FC = () => {
+import { CollectionPage } from './CollectionPage';
+
+interface ComponentProps {
+	match: RouteComponentProps['match'];
+}
+
+export const ShopPage: React.FC<ComponentProps> = ({ match }) => {
 	return (
 		<Box>
-			<CollectionOverview />
+			<Switch>
+				<Route
+					component={CollectionPage}
+					path={`${match.path}/:collectionId`}
+				/>
+				<Route component={CollectionOverview} path={`${match.path}`} />
+			</Switch>
 		</Box>
 	);
 };
