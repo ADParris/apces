@@ -1,7 +1,7 @@
 import { Box, Flex, Image } from '@chakra-ui/react';
 import React from 'react';
 
-import { ICartItem } from '../../models';
+import { ICartItem } from '../../redux/cart/types';
 
 interface ComponentProps {
 	item: ICartItem;

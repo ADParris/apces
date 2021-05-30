@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { IProduct } from '../../models';
-import { addCartItem } from '../../redux/system';
+import { addCartItem } from '../../redux/cart';
 
 import { CustomButton } from '../CustomButton';
 

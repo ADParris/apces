@@ -2,7 +2,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectCartItemsCount, toggleCartHidden } from '../../redux/system';
+import { selectCartItemsCount, toggleCartHidden } from '../../redux/cart';
 
 import { ReactComponent as ShoppingBag } from '../../assets/images/shopping-bag.svg';
 

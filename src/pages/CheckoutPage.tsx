@@ -2,7 +2,7 @@ import { Box, Flex, Text } from '@chakra-ui/react';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { selectCartItems, selectCartTotal } from '../redux/system';
+import { selectCartItems, selectCartTotal } from '../redux/cart';
 
 import { PlaceholderText } from '../components/common';
 import { CheckoutItem } from '../components';

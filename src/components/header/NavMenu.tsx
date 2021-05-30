@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 
-import { selectCurrentUser } from '../../redux/system';
+import { selectCurrentUser } from '../../redux/user';
 import { auth } from '../../services';
 
 import { CartIcon } from '../cart/CartIcon';

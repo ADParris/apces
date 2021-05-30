@@ -1,4 +1,4 @@
-import { ICartItem } from '../../models';
+import { ICartItem } from './types';
 
 const _addOrRemoveCartItem = (
 	addOrRemove: string,

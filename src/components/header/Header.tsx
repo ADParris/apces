@@ -2,7 +2,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { selectCartHidden } from '../../redux/system';
+import { selectCartHidden } from '../../redux/cart';
 
 import { CartDropdown } from '../cart/CartDropdown';
 import { CustomLogo } from '..';

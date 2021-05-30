@@ -1,17 +1,8 @@
 import { createSelector } from 'reselect';
-import { ISystem, ISystemState } from './types';
+import { RootState } from '../root_reducer';
+import { ICartState } from './types';
 
-const _selectSystemState = (state: ISystemState): ISystem => state.system;
-
-const selectCurrentUser = createSelector(
-	[_selectSystemState],
-	system => system.user
-);
-
-const _selectCartState = createSelector(
-	[_selectSystemState],
-	system => system.cart
-);
+const _selectCartState = (state: RootState): ICartState => state.cart;
 
 const selectCartHidden = createSelector(
 	[_selectCartState],
@@ -39,5 +30,4 @@ export {
 	selectCartItems,
 	selectCartItemsCount,
 	selectCartTotal,
-	selectCurrentUser,
 };

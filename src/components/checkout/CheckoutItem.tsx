@@ -2,8 +2,8 @@ import { Box, Flex, Image, Text } from '@chakra-ui/react';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { addCartItem, clearCartItem, removeCartItem } from '../../redux/system';
-import { ICartItem } from '../../models';
+import { addCartItem, clearCartItem, removeCartItem } from '../../redux/cart';
+import { ICartItem } from '../../redux/cart/types';
 
 interface ComponentProps {
 	item: ICartItem;

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 
 import { Colors } from '../../constants';
-import { selectCartItems, toggleCartHidden } from '../../redux/system';
+import { selectCartItems, toggleCartHidden } from '../../redux/cart';
 
 import { CustomButton } from '../CustomButton';
 import { CartItem } from './CartItem';

@@ -3,11 +3,12 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { PersistGate } from 'redux-persist/integration/react';
 
 // import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 // import reportWebVitals from './reportWebVitals';
 
-import store from './redux/store';
+import { persistor, store } from './redux/store';
 
 import { App } from './App';
 
@@ -16,7 +17,9 @@ render(
 		<Provider store={store}>
 			<ColorModeScript />
 			<Router>
-				<App />
+				<PersistGate persistor={persistor}>
+					<App />
+				</PersistGate>
 			</Router>
 		</Provider>
 	</React.StrictMode>,

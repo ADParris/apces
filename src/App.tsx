@@ -5,13 +5,13 @@ import { Switch, Redirect, Route } from 'react-router-dom';
 
 import { auth, getCurrentUser } from './services';
 
-import { selectCurrentUser, setCurrentUser } from './redux/system';
+import { selectCurrentUser, setCurrentUser } from './redux/user';
 import '@fontsource/open-sans-condensed';
 import { theme } from './constants';
+import { IUser } from './models';
 
 import { AuthPage, CheckoutPage, HomePage, ShopPage } from './pages';
 import { Header } from './components';
-import { IUser } from './models';
 
 export const App: React.FC = () => {
 	const dispatch = useDispatch();
