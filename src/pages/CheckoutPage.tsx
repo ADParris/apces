@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { selectCartItems, selectCartTotal } from '../redux/cart';
 
 import { PlaceholderText } from '../components/common';
-import { CheckoutItem } from '../components';
+import { CheckoutItem, StripeCheckoutButton } from '../components';
 
 export const CheckoutPage: React.FC = () => {
 	const columnHeaders = [
@@ -42,6 +42,17 @@ export const CheckoutPage: React.FC = () => {
 			))}
 			<Flex justifyContent="flex-end" w="full">
 				<Text fontSize="2.25rem">TOTAL: ${cartTotal}</Text>
+			</Flex>
+			<Flex alignItems="center" flexDirection="column" my="1rem">
+				<Text color="red" fontSize="1.5rem">
+					*** Please use the following test credit card number for payments ***
+				</Text>
+				<Text color="red" fontSize="1.5rem">
+					4242 4242 4242 4242 - Exp. 01/30 - CVV: 123
+				</Text>
+			</Flex>
+			<Flex justifyContent="flex-end" w="full">
+				<StripeCheckoutButton price={cartTotal} />
 			</Flex>
 		</Flex>
 	);
