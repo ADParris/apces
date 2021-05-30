@@ -8,3 +8,4 @@ export * from './header/ColorModeSwitcher';
 export * from './CustomButton';
 export * from './CustomInput';
 export * from './CustomLogo';
+export * from './checkout/CheckoutItem';

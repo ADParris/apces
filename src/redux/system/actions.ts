@@ -6,6 +6,16 @@ const addCartItem = (item: ICartItem): SystemActions => ({
 	payload: item,
 });
 
+const clearCartItem = (item: ICartItem): SystemActions => ({
+	type: SystemActionTypes.CLEAR_CART_ITEM,
+	payload: item,
+});
+
+const removeCartItem = (item: ICartItem): SystemActions => ({
+	type: SystemActionTypes.REMOVE_CART_ITEM,
+	payload: item,
+});
+
 const setCurrentUser = (user: IUser | null): SystemActions => ({
 	type: SystemActionTypes.SET_CURRENT_USER,
 	payload: user,
@@ -15,4 +25,10 @@ const toggleCartHidden = (): SystemActions => ({
 	type: SystemActionTypes.TOGGLE_CART_HIDDEN,
 });
 
-export { addCartItem, setCurrentUser, toggleCartHidden };
+export {
+	addCartItem,
+	clearCartItem,
+	removeCartItem,
+	setCurrentUser,
+	toggleCartHidden,
+};

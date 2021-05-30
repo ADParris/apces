@@ -1,6 +1,6 @@
 import { ICartItem } from '../../models';
 import { SystemActions, SystemActionTypes } from './types';
-import { addItemToCart } from './utils';
+import { addRemoveOrClearItem } from './utils';
 
 const INITIAL_STATE = {
 	user: null,
@@ -20,7 +20,35 @@ export const systemReducer = (
 				...state,
 				cart: {
 					...state.cart,
-					items: addItemToCart(state.cart.items, payload as ICartItem),
+					items: addRemoveOrClearItem(
+						'add',
+						state.cart.items,
+						payload as ICartItem
+					),
+				},
+			};
+		case SystemActionTypes.CLEAR_CART_ITEM:
+			return {
+				...state,
+				cart: {
+					...state.cart,
+					items: addRemoveOrClearItem(
+						'clear',
+						state.cart.items,
+						payload as ICartItem
+					),
+				},
+			};
+		case SystemActionTypes.REMOVE_CART_ITEM:
+			return {
+				...state,
+				cart: {
+					...state.cart,
+					items: addRemoveOrClearItem(
+						'remove',
+						state.cart.items,
+						payload as ICartItem
+					),
 				},
 			};
 		case SystemActionTypes.SET_CURRENT_USER:

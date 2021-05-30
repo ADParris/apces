@@ -1,13 +1,16 @@
 import { Box, Flex } from '@chakra-ui/react';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { toggleCartHidden } from '../../redux/system';
+import { selectCartItemsCount, toggleCartHidden } from '../../redux/system';
 
 import { ReactComponent as ShoppingBag } from '../../assets/images/shopping-bag.svg';
 
 export const CartIcon: React.FC = () => {
 	const dispatch = useDispatch();
+
+	// Redux store...
+	const itemCount = useSelector(selectCartItemsCount);
 
 	const handleClick = () => dispatch(toggleCartHidden());
 
@@ -29,7 +32,7 @@ export const CartIcon: React.FC = () => {
 				fontWeight="bold"
 				position="absolute"
 			>
-				0
+				{itemCount}
 			</Box>
 		</Flex>
 	);

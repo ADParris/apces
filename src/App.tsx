@@ -9,7 +9,7 @@ import { selectCurrentUser, setCurrentUser } from './redux/system';
 import '@fontsource/open-sans-condensed';
 import { theme } from './constants';
 
-import { AuthPage, HomePage, ShopPage } from './pages';
+import { AuthPage, CheckoutPage, HomePage, ShopPage } from './pages';
 import { Header } from './components';
 import { IUser } from './models';
 
@@ -46,6 +46,7 @@ export const App: React.FC = () => {
 						path="/signin"
 						render={() => (currentUser ? <Redirect to="/" /> : <AuthPage />)}
 					/>
+					<Route path="/checkout" component={CheckoutPage} />
 					<Route path="/shop" component={ShopPage} />
 					<Route path="/" component={HomePage} />
 				</Switch>
